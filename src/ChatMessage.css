@@ -1,0 +1,38 @@
+.msg-box {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  margin: 15px 30px;
+}
+
+.msg-name {
+  margin: 5px;
+  font-weight: 500;
+}
+.msg-body {
+  background-color: #e9e9eb;
+  color: #000;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.send-box {
+  justify-content: flex-end;
+}
+.send-msg {
+  color: #fff;
+  background-color: #1185f7;
+}
+
+.receive-tip {
+  position: relative;
+  top: -20px;
+  left: -13px;
+}
+
+.sent-tip {
+  position: relative;
+  top: 20px;
+  left: -4px;
+}

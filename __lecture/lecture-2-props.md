@@ -89,11 +89,11 @@ const UserProfile = ({ username, email, bio }) => {
 Make the components reusable by using props.
 
 ```jsx
-function VideoPlayer(props) {
+function VideoPlayer({videoSrc, videoHeight, videoWidth, videoCaption}) {
   return (
     <div>
-      <video src="http://youtube.com/some-video" width={480} height={300} />
-      <p>Cat playing the piano!!</p>
+      <video src={videoSrc} width={videoHeight} height={videoWidth} />
+      <p>{videoCaption}</p>
     </div>
   );
 }
@@ -124,6 +124,27 @@ function Tweet(props) {
   );
 }
 ```
+function Tweet({src, name, handle, date, quote}) {
+  return (
+    <div>
+      <Avatar src={src} />
+      <div>
+        <p>
+          <span className="user-name">{name}</span>
+          <span className="handle">{handle}</span>
+          <span className="date">{date}</span>
+        </p>
+        <p>{quote}</p>
+        <div>
+          <button>Reply</button>
+          <button>Retweet</button>
+          <button>Like</button>
+          <button>Share</button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 ---
 
@@ -140,6 +161,18 @@ function Header(props) {
   );
 }
 ```
+function Header({title, navLinks}) {
+  return (
+    <header>
+      <h1>{title}</h1>
+      <nav>
+        <a href={navLinks.about.url}>{navLinks.about.label}</a>
+        <a href={navLinks.contact.url}>{navLinks.contact.label}</a>
+      </nav>
+    </header>
+  );
+}
+
 
 ---
 
@@ -250,6 +283,25 @@ const pets = [
   </ul>
 </div>;
 ```
+function app({title}) {
+  return (
+    <div>
+      <h1 className='title'>{title}</h1>
+      <ul>
+        {pet.map( pet => (
+          <PetInfo
+            name={pet.name}
+            age={pet.age}
+            species={pet.species}
+            breed={pet.breed}
+          />
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+
 
 ---
 
@@ -266,6 +318,7 @@ const forecasts = [4, -3, 1, 9, 4, 2, -6];
   <Day>4 degrees</Day>
   <Day>2 degrees</Day>
   <Day>-6 degrees</Day>
+  {forecasts.map( temp => <Day>{temp} Degrees</Day> )}
 </div>;
 ```
 
@@ -284,5 +337,7 @@ const pizzaToppings = [
   <Topping name="broccoli" />
 </Pizza>
 ```
-
-Hint: You'll need `filter` as well as `map`
+{pizzaToppings
+  .filter( pizzaTopping => pizzaTopping.isVegetarian)
+  .map(item => <Topping name={item.name} />)}
+<!-- Hint: You'll need `filter` as well as `map` -->
