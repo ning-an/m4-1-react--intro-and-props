@@ -6,15 +6,31 @@ import Footer from "./Footer";
 
 import "./App.css";
 
-const App = ({ currentUser, conversation }) => {
+const App = ({ users, conversation }) => {
   return (
-    <div className="wrapper">
-      <Header
-        participants={conversation.participants}
-        currentUser={currentUser}
-      />
-      <ChatStream messages={conversation.messages} currentUser={currentUser} />
-      <Footer />
+    <div className="chatBox">
+      <div className="wrapper">
+        <Header
+          participants={conversation.participants}
+          currentUser={users.elaine}
+        />
+        <ChatStream
+          messages={conversation.messages}
+          currentUser={users.elaine}
+        />
+        <Footer />
+      </div>
+      <div className="wrapper">
+        <Header
+          participants={conversation.participants}
+          currentUser={users.george}
+        />
+        <ChatStream
+          messages={conversation.messages}
+          currentUser={users.george}
+        />
+        <Footer />
+      </div>
     </div>
   );
 };

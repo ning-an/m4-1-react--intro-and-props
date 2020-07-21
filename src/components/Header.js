@@ -9,9 +9,14 @@ const Header = ({ participants, currentUser }) => {
       <div className="participants">
         {participants
           .filter((participant) => participant !== currentUser)
-          .map((part, index) => (
-            <Image key={index} user={part} />
-          ))}
+          .map((part, index) => {
+            return (
+              <div key={index}>
+                <Image user={part} />
+                <h3>{part.username}</h3>
+              </div>
+            );
+          })}
       </div>
     </header>
   );
